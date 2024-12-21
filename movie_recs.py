@@ -1,9 +1,20 @@
 import pymongo
 import requests
 import time
+from dotenv import load_dotenv
+import os
+
+# MongoDB credentials from .env
+MONGODB_USER = os.getenv("MONGODB_USER")
+MONGODB_PASSWORD = os.getenv("MONGODB_PASSWORD")
 
 # MongoDB connection
-client = pymongo.MongoClient("mongodb+srv://abdallahnaitabdallah:gKMhysrtTi8Wr0GZ@rag.irwur.mongodb.net/?retryWrites=true&w=majority&appName=RAG")
+client = pymongo.MongoClient(
+    f"mongodb+srv://{MONGODB_USER}:{MONGODB_PASSWORD}@rag.irwur.mongodb.net/?retryWrites=true&w=majority&appName=RAG"
+)
+
+# MongoDB connection
+client = pymongo.MongoClient("mongodb+srv://{MONGO}:gKMhysrtTi8Wr0GZ@rag.irwur.mongodb.net/?retryWrites=true&w=majority&appName=RAG")
 db = client.sample_mflix
 collection = db.movies
 
